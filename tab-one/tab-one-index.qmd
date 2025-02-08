@@ -1,9 +1,19 @@
+---
+title: "IFRAME TITLE"
+---
+
+
 # Load necessary libraries
+```{r, echo=FALSE,message=FALSE}
 library(tibble)
-library(dplyr)
 library(lubridate)
+library(tidyverse)
+```
+
+
 
 # Create a codebook for the questionnaire
+```{r}
 codebook <- tibble(
   variable_name = c("age_group", "chatbot_usage", "primary_purpose", "satisfaction", "improvements"),
   question = c(
@@ -15,7 +25,12 @@ codebook <- tibble(
   )
 )
 
+```
+
+
+
 # Generate a synthetic dataset
+```{r}
 set.seed(123)
 synthetic_data <- tibble(
   age_group = sample(c("Under 18", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"), 200, replace = TRUE),
@@ -43,9 +58,22 @@ synthetic_data <- synthetic_data %>%
 # Save the dataset to a CSV file
 write.csv(synthetic_data, "synthetic_survey_data.csv", row.names = FALSE)
 
+```
+
+
+
 # Display the first few rows
+```{r}
 print(head(synthetic_data))
 
+```
+
+
 # Print the codebook
+```{r}
 print(codebook)
+```
+
+
+
 

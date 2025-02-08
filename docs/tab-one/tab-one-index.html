@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tab-one-index – Course website 01</title>
+<title>IFRAME TITLE – Course website 01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -126,56 +160,115 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#load-necessary-libraries" id="toc-load-necessary-libraries" class="nav-link active" data-scroll-target="#load-necessary-libraries">Load necessary libraries</a></li>
   <li><a href="#create-a-codebook-for-the-questionnaire" id="toc-create-a-codebook-for-the-questionnaire" class="nav-link" data-scroll-target="#create-a-codebook-for-the-questionnaire">Create a codebook for the questionnaire</a></li>
   <li><a href="#generate-a-synthetic-dataset" id="toc-generate-a-synthetic-dataset" class="nav-link" data-scroll-target="#generate-a-synthetic-dataset">Generate a synthetic dataset</a></li>
-  <li><a href="#define-the-start-and-end-datetime" id="toc-define-the-start-and-end-datetime" class="nav-link" data-scroll-target="#define-the-start-and-end-datetime">Define the start and end datetime</a></li>
-  <li><a href="#calculate-the-total-number-of-seconds-in-the-one-year-interval" id="toc-calculate-the-total-number-of-seconds-in-the-one-year-interval" class="nav-link" data-scroll-target="#calculate-the-total-number-of-seconds-in-the-one-year-interval">Calculate the total number of seconds in the one-year interval</a></li>
-  <li><a href="#add-a-user_id-and-random-timestamp" id="toc-add-a-user_id-and-random-timestamp" class="nav-link" data-scroll-target="#add-a-user_id-and-random-timestamp">Add a user_id and random timestamp</a></li>
-  <li><a href="#save-the-dataset-to-a-csv-file" id="toc-save-the-dataset-to-a-csv-file" class="nav-link" data-scroll-target="#save-the-dataset-to-a-csv-file">Save the dataset to a CSV file</a></li>
   <li><a href="#display-the-first-few-rows" id="toc-display-the-first-few-rows" class="nav-link" data-scroll-target="#display-the-first-few-rows">Display the first few rows</a></li>
   <li><a href="#print-the-codebook" id="toc-print-the-codebook" class="nav-link" data-scroll-target="#print-the-codebook">Print the codebook</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IFRAME TITLE</h1>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="load-necessary-libraries" class="level1">
 <h1>Load necessary libraries</h1>
-<p>library(tibble) library(dplyr) library(lubridate)</p>
 </section>
 <section id="create-a-codebook-for-the-questionnaire" class="level1">
 <h1>Create a codebook for the questionnaire</h1>
-<p>codebook &lt;- tibble( variable_name = c(“age_group”, “chatbot_usage”, “primary_purpose”, “satisfaction”, “improvements”), question = c( “What is your age group?”, “How often do you interact with AI chatbots?”, “What is the primary purpose for using AI chatbots?”, “How satisfied are you with the chatbot experience?”, “What improvements would you suggest?” ) )</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>codebook <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable_name =</span> <span class="fu">c</span>(<span class="st">"age_group"</span>, <span class="st">"chatbot_usage"</span>, <span class="st">"primary_purpose"</span>, <span class="st">"satisfaction"</span>, <span class="st">"improvements"</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">question =</span> <span class="fu">c</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What is your age group?"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"How often do you interact with AI chatbots?"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What is the primary purpose for using AI chatbots?"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"How satisfied are you with the chatbot experience?"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What improvements would you suggest?"</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="generate-a-synthetic-dataset" class="level1">
 <h1>Generate a synthetic dataset</h1>
-<p>set.seed(123) synthetic_data &lt;- tibble( age_group = sample(c(“Under 18”, “18-24”, “25-34”, “35-44”, “45-54”, “55-64”, “65+”), 200, replace = TRUE), chatbot_usage = sample(c(“Daily”, “Weekly”, “Monthly”, “Rarely”, “Never”), 200, replace = TRUE), primary_purpose = sample(c(“Customer Service”, “Learning”, “Entertainment”, “Productivity”, “Other”), 200, replace = TRUE), satisfaction = sample(1:5, 200, replace = TRUE), # 1 = Very Dissatisfied, 5 = Very Satisfied improvements = sample(c(“Faster Responses”, “Better Understanding”, “More Personalization”, “None”), 200, replace = TRUE) )</p>
-</section>
-<section id="define-the-start-and-end-datetime" class="level1">
-<h1>Define the start and end datetime</h1>
-<p>start_datetime &lt;- ymd_hms(“2025-01-01T00:00:00Z”) end_datetime &lt;- ymd_hms(“2025-12-31T23:59:59Z”)</p>
-</section>
-<section id="calculate-the-total-number-of-seconds-in-the-one-year-interval" class="level1">
-<h1>Calculate the total number of seconds in the one-year interval</h1>
-<p>total_seconds &lt;- as.numeric(difftime(end_datetime, start_datetime, units = “secs”))</p>
-</section>
-<section id="add-a-user_id-and-random-timestamp" class="level1">
-<h1>Add a user_id and random timestamp</h1>
-<p>synthetic_data &lt;- synthetic_data %&gt;% rowid_to_column(var = “user_id”) %&gt;% mutate( user_id = paste0(“id_”, user_id), timestamp = start_datetime + seconds(runif(n(), min = 0, max = total_seconds)) )</p>
-</section>
-<section id="save-the-dataset-to-a-csv-file" class="level1">
-<h1>Save the dataset to a CSV file</h1>
-<p>write.csv(synthetic_data, “synthetic_survey_data.csv”, row.names = FALSE)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>synthetic_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_group =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Under 18"</span>, <span class="st">"18-24"</span>, <span class="st">"25-34"</span>, <span class="st">"35-44"</span>, <span class="st">"45-54"</span>, <span class="st">"55-64"</span>, <span class="st">"65+"</span>), <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">chatbot_usage =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Daily"</span>, <span class="st">"Weekly"</span>, <span class="st">"Monthly"</span>, <span class="st">"Rarely"</span>, <span class="st">"Never"</span>), <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">primary_purpose =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Customer Service"</span>, <span class="st">"Learning"</span>, <span class="st">"Entertainment"</span>, <span class="st">"Productivity"</span>, <span class="st">"Other"</span>), <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">satisfaction =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),  <span class="co"># 1 = Very Dissatisfied, 5 = Very Satisfied</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">improvements =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Faster Responses"</span>, <span class="st">"Better Understanding"</span>, <span class="st">"More Personalization"</span>, <span class="st">"None"</span>), <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the start and end datetime</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>start_datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2025-01-01T00:00:00Z"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>end_datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">"2025-12-31T23:59:59Z"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of seconds in the one-year interval</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>total_seconds <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(end_datetime, start_datetime, <span class="at">units =</span> <span class="st">"secs"</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a user_id and random timestamp</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>synthetic_data <span class="ot">&lt;-</span> synthetic_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowid_to_column</span>(<span class="at">var =</span> <span class="st">"user_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">user_id =</span> <span class="fu">paste0</span>(<span class="st">"id_"</span>, user_id),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">timestamp =</span> start_datetime <span class="sc">+</span> <span class="fu">seconds</span>(<span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> total_seconds))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the dataset to a CSV file</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(synthetic_data, <span class="st">"synthetic_survey_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="display-the-first-few-rows" class="level1">
 <h1>Display the first few rows</h1>
-<p>print(head(synthetic_data))</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(synthetic_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  user_id age_group chatbot_usage primary_purpose  satisfaction improvements    
+  &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;                   &lt;int&gt; &lt;chr&gt;           
+1 id_1    65+       Weekly        Productivity                5 More Personaliz…
+2 id_2    65+       Monthly       Learning                    1 Better Understa…
+3 id_3    25-34     Never         Customer Service            1 Better Understa…
+4 id_4    55-64     Daily         Productivity                1 Faster Responses
+5 id_5    25-34     Rarely        Entertainment               5 None            
+6 id_6    18-24     Weekly        Customer Service            5 More Personaliz…
+# ℹ 1 more variable: timestamp &lt;dttm&gt;</code></pre>
+</div>
+</div>
 </section>
 <section id="print-the-codebook" class="level1">
 <h1>Print the codebook</h1>
-<p>print(codebook)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(codebook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  variable_name   question                                          
+  &lt;chr&gt;           &lt;chr&gt;                                             
+1 age_group       What is your age group?                           
+2 chatbot_usage   How often do you interact with AI chatbots?       
+3 primary_purpose What is the primary purpose for using AI chatbots?
+4 satisfaction    How satisfied are you with the chatbot experience?
+5 improvements    What improvements would you suggest?              </code></pre>
+</div>
+</div>
 
 
 </section>
