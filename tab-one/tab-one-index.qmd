@@ -1,12 +1,51 @@
----
-title: "Add a title to your Tab index page"
----
+# Load necessary libraries
+library(tibble)
+library(dplyr)
+library(lubridate)
 
-## Nemo enim ipsam
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+# Create a codebook for the questionnaire
+codebook <- tibble(
+  variable_name = c("age_group", "chatbot_usage", "primary_purpose", "satisfaction", "improvements"),
+  question = c(
+    "What is your age group?",
+    "How often do you interact with AI chatbots?",
+    "What is the primary purpose for using AI chatbots?",
+    "How satisfied are you with the chatbot experience?",
+    "What improvements would you suggest?"
+  )
+)
 
-## Add an image
+# Generate a synthetic dataset
+set.seed(123)
+synthetic_data <- tibble(
+  age_group = sample(c("Under 18", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"), 200, replace = TRUE),
+  chatbot_usage = sample(c("Daily", "Weekly", "Monthly", "Rarely", "Never"), 200, replace = TRUE),
+  primary_purpose = sample(c("Customer Service", "Learning", "Entertainment", "Productivity", "Other"), 200, replace = TRUE),
+  satisfaction = sample(1:5, 200, replace = TRUE),  # 1 = Very Dissatisfied, 5 = Very Satisfied
+  improvements = sample(c("Faster Responses", "Better Understanding", "More Personalization", "None"), 200, replace = TRUE)
+)
 
-![](/images/workflow.png)
+# Define the start and end datetime
+start_datetime <- ymd_hms("2025-01-01T00:00:00Z")
+end_datetime <- ymd_hms("2025-12-31T23:59:59Z")
 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+# Calculate the total number of seconds in the one-year interval
+total_seconds <- as.numeric(difftime(end_datetime, start_datetime, units = "secs"))
+
+# Add a user_id and random timestamp
+synthetic_data <- synthetic_data %>%
+  rowid_to_column(var = "user_id") %>%
+  mutate(
+    user_id = paste0("id_", user_id),
+    timestamp = start_datetime + seconds(runif(n(), min = 0, max = total_seconds))
+  )
+
+# Save the dataset to a CSV file
+write.csv(synthetic_data, "synthetic_survey_data.csv", row.names = FALSE)
+
+# Display the first few rows
+print(head(synthetic_data))
+
+# Print the codebook
+print(codebook)
+

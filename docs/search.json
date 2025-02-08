@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "tab-iframe/iframe-index.html",
+    "href": "tab-iframe/iframe-index.html",
+    "title": "Quarto iFrame example",
+    "section": "",
+    "text": "&lt;iframe src=“Φόρτωση…"
+  },
+  {
     "objectID": "tab-presentation/presentation-index.html",
     "href": "tab-presentation/presentation-index.html",
     "title": "Examples of presentations",
@@ -9,23 +16,9 @@
   {
     "objectID": "tab-one/tab-one-index.html",
     "href": "tab-one/tab-one-index.html",
-    "title": "Add a title to your Tab index page",
+    "title": "Load necessary libraries",
     "section": "",
-    "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "objectID": "tab-one/tab-one-index.html#nemo-enim-ipsam",
-    "href": "tab-one/tab-one-index.html#nemo-enim-ipsam",
-    "title": "Add a title to your Tab index page",
-    "section": "",
-    "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "objectID": "tab-one/tab-one-index.html#add-an-image",
-    "href": "tab-one/tab-one-index.html#add-an-image",
-    "title": "Add a title to your Tab index page",
-    "section": "Add an image",
-    "text": "Add an image\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+    "text": "Load necessary libraries\nlibrary(tibble) library(dplyr) library(lubridate)\n\n\nCreate a codebook for the questionnaire\ncodebook &lt;- tibble( variable_name = c(“age_group”, “chatbot_usage”, “primary_purpose”, “satisfaction”, “improvements”), question = c( “What is your age group?”, “How often do you interact with AI chatbots?”, “What is the primary purpose for using AI chatbots?”, “How satisfied are you with the chatbot experience?”, “What improvements would you suggest?” ) )\n\n\nGenerate a synthetic dataset\nset.seed(123) synthetic_data &lt;- tibble( age_group = sample(c(“Under 18”, “18-24”, “25-34”, “35-44”, “45-54”, “55-64”, “65+”), 200, replace = TRUE), chatbot_usage = sample(c(“Daily”, “Weekly”, “Monthly”, “Rarely”, “Never”), 200, replace = TRUE), primary_purpose = sample(c(“Customer Service”, “Learning”, “Entertainment”, “Productivity”, “Other”), 200, replace = TRUE), satisfaction = sample(1:5, 200, replace = TRUE), # 1 = Very Dissatisfied, 5 = Very Satisfied improvements = sample(c(“Faster Responses”, “Better Understanding”, “More Personalization”, “None”), 200, replace = TRUE) )\n\n\nDefine the start and end datetime\nstart_datetime &lt;- ymd_hms(“2025-01-01T00:00:00Z”) end_datetime &lt;- ymd_hms(“2025-12-31T23:59:59Z”)\n\n\nCalculate the total number of seconds in the one-year interval\ntotal_seconds &lt;- as.numeric(difftime(end_datetime, start_datetime, units = “secs”))\n\n\nAdd a user_id and random timestamp\nsynthetic_data &lt;- synthetic_data %&gt;% rowid_to_column(var = “user_id”) %&gt;% mutate( user_id = paste0(“id_”, user_id), timestamp = start_datetime + seconds(runif(n(), min = 0, max = total_seconds)) )\n\n\nSave the dataset to a CSV file\nwrite.csv(synthetic_data, “synthetic_survey_data.csv”, row.names = FALSE)\n\n\nDisplay the first few rows\nprint(head(synthetic_data))\n\n\nPrint the codebook\nprint(codebook)"
   },
   {
     "objectID": "index.html",

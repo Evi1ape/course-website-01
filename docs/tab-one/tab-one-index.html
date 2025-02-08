@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Add a title to your Tab index page – Course website 01</title>
+<title>tab-one-index – Course website 01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -123,41 +123,59 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#nemo-enim-ipsam" id="toc-nemo-enim-ipsam" class="nav-link active" data-scroll-target="#nemo-enim-ipsam">Nemo enim ipsam</a></li>
-  <li><a href="#add-an-image" id="toc-add-an-image" class="nav-link" data-scroll-target="#add-an-image">Add an image</a></li>
+  <li><a href="#load-necessary-libraries" id="toc-load-necessary-libraries" class="nav-link active" data-scroll-target="#load-necessary-libraries">Load necessary libraries</a></li>
+  <li><a href="#create-a-codebook-for-the-questionnaire" id="toc-create-a-codebook-for-the-questionnaire" class="nav-link" data-scroll-target="#create-a-codebook-for-the-questionnaire">Create a codebook for the questionnaire</a></li>
+  <li><a href="#generate-a-synthetic-dataset" id="toc-generate-a-synthetic-dataset" class="nav-link" data-scroll-target="#generate-a-synthetic-dataset">Generate a synthetic dataset</a></li>
+  <li><a href="#define-the-start-and-end-datetime" id="toc-define-the-start-and-end-datetime" class="nav-link" data-scroll-target="#define-the-start-and-end-datetime">Define the start and end datetime</a></li>
+  <li><a href="#calculate-the-total-number-of-seconds-in-the-one-year-interval" id="toc-calculate-the-total-number-of-seconds-in-the-one-year-interval" class="nav-link" data-scroll-target="#calculate-the-total-number-of-seconds-in-the-one-year-interval">Calculate the total number of seconds in the one-year interval</a></li>
+  <li><a href="#add-a-user_id-and-random-timestamp" id="toc-add-a-user_id-and-random-timestamp" class="nav-link" data-scroll-target="#add-a-user_id-and-random-timestamp">Add a user_id and random timestamp</a></li>
+  <li><a href="#save-the-dataset-to-a-csv-file" id="toc-save-the-dataset-to-a-csv-file" class="nav-link" data-scroll-target="#save-the-dataset-to-a-csv-file">Save the dataset to a CSV file</a></li>
+  <li><a href="#display-the-first-few-rows" id="toc-display-the-first-few-rows" class="nav-link" data-scroll-target="#display-the-first-few-rows">Display the first few rows</a></li>
+  <li><a href="#print-the-codebook" id="toc-print-the-codebook" class="nav-link" data-scroll-target="#print-the-codebook">Print the codebook</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Add a title to your Tab index page</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="nemo-enim-ipsam" class="level2">
-<h2 class="anchored" data-anchor-id="nemo-enim-ipsam">Nemo enim ipsam</h2>
-<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+<section id="load-necessary-libraries" class="level1">
+<h1>Load necessary libraries</h1>
+<p>library(tibble) library(dplyr) library(lubridate)</p>
 </section>
-<section id="add-an-image" class="level2">
-<h2 class="anchored" data-anchor-id="add-an-image">Add an image</h2>
-<p><img src="../images/workflow.png" class="img-fluid"></p>
-<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+<section id="create-a-codebook-for-the-questionnaire" class="level1">
+<h1>Create a codebook for the questionnaire</h1>
+<p>codebook &lt;- tibble( variable_name = c(“age_group”, “chatbot_usage”, “primary_purpose”, “satisfaction”, “improvements”), question = c( “What is your age group?”, “How often do you interact with AI chatbots?”, “What is the primary purpose for using AI chatbots?”, “How satisfied are you with the chatbot experience?”, “What improvements would you suggest?” ) )</p>
+</section>
+<section id="generate-a-synthetic-dataset" class="level1">
+<h1>Generate a synthetic dataset</h1>
+<p>set.seed(123) synthetic_data &lt;- tibble( age_group = sample(c(“Under 18”, “18-24”, “25-34”, “35-44”, “45-54”, “55-64”, “65+”), 200, replace = TRUE), chatbot_usage = sample(c(“Daily”, “Weekly”, “Monthly”, “Rarely”, “Never”), 200, replace = TRUE), primary_purpose = sample(c(“Customer Service”, “Learning”, “Entertainment”, “Productivity”, “Other”), 200, replace = TRUE), satisfaction = sample(1:5, 200, replace = TRUE), # 1 = Very Dissatisfied, 5 = Very Satisfied improvements = sample(c(“Faster Responses”, “Better Understanding”, “More Personalization”, “None”), 200, replace = TRUE) )</p>
+</section>
+<section id="define-the-start-and-end-datetime" class="level1">
+<h1>Define the start and end datetime</h1>
+<p>start_datetime &lt;- ymd_hms(“2025-01-01T00:00:00Z”) end_datetime &lt;- ymd_hms(“2025-12-31T23:59:59Z”)</p>
+</section>
+<section id="calculate-the-total-number-of-seconds-in-the-one-year-interval" class="level1">
+<h1>Calculate the total number of seconds in the one-year interval</h1>
+<p>total_seconds &lt;- as.numeric(difftime(end_datetime, start_datetime, units = “secs”))</p>
+</section>
+<section id="add-a-user_id-and-random-timestamp" class="level1">
+<h1>Add a user_id and random timestamp</h1>
+<p>synthetic_data &lt;- synthetic_data %&gt;% rowid_to_column(var = “user_id”) %&gt;% mutate( user_id = paste0(“id_”, user_id), timestamp = start_datetime + seconds(runif(n(), min = 0, max = total_seconds)) )</p>
+</section>
+<section id="save-the-dataset-to-a-csv-file" class="level1">
+<h1>Save the dataset to a CSV file</h1>
+<p>write.csv(synthetic_data, “synthetic_survey_data.csv”, row.names = FALSE)</p>
+</section>
+<section id="display-the-first-few-rows" class="level1">
+<h1>Display the first few rows</h1>
+<p>print(head(synthetic_data))</p>
+</section>
+<section id="print-the-codebook" class="level1">
+<h1>Print the codebook</h1>
+<p>print(codebook)</p>
 
 
 </section>
